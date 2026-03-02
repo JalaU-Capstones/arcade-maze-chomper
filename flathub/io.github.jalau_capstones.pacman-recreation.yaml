@@ -31,7 +31,7 @@ modules:
         dotnet publish src/PacmanGame/PacmanGame.csproj \
           -c Release \
           -r $RID \
-          --no-self-contained \
+          --self-contained true \
           --source ./nuget-sources \
           -o /app/lib/pacman-recreation \
           /p:PublishSingleFile=false \
