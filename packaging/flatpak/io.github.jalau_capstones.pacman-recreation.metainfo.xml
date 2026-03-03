@@ -20,20 +20,22 @@
 
     <launchable type="desktop-id">io.github.jalau_capstones.pacman-recreation.desktop</launchable>
 
+    <icon type="stock">io.github.jalau_capstones.pacman-recreation</icon>
+
     <screenshots>
         <screenshot type="default">
-            <image>https://raw.githubusercontent.com/JalaU-Capstones/pacman-recreation/059170493dbaddf730869ce4faed2341a6127307/docs/images/screenshot1.png</image>
+            <image type="source">https://raw.githubusercontent.com/JalaU-Capstones/pacman-recreation/b7788d557e16754129512d8cfbd09878f6686383/docs/images/screenshot1.png</image>
             <caption>Classic maze gameplay</caption>
         </screenshot>
         <screenshot>
-            <image>https://raw.githubusercontent.com/JalaU-Capstones/pacman-recreation/059170493dbaddf730869ce4faed2341a6127307/docs/images/screenshot2.png</image>
+            <image type="source">https://raw.githubusercontent.com/JalaU-Capstones/pacman-recreation/b7788d557e16754129512d8cfbd09878f6686383/docs/images/screenshot2.png</image>
             <caption>Chasing ghosts in a tight corridor</caption>
         </screenshot>
     </screenshots>
 
     <url type="homepage">https://github.com/JalaU-Capstones/pacman-recreation</url>
     <url type="bugtracker">https://github.com/JalaU-Capstones/pacman-recreation/issues</url>
-    <url type="vcs-browser">https://github.com/JalaU-Capstones/pacman-recreation</url>
+    <url type="vcs-browser">https://github.com/JalaU-Capstones/pacman-recreation/tree/v1.0.4</url>
 
     <developer_name>Code With Botina</developer_name>
     <developer id="io.github.jalau_capstones">
