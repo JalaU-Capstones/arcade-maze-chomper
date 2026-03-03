@@ -78,8 +78,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/JalaU-Capstones/pacman-recreation.git
-        tag: v1.0.5
-        commit: 4b79bbe34c3909a13b1c77a91bc2bbe03232b620
+        tag: v1.1.0
       - generated-sources.json
       - type: script
         dest-filename: arcade-maze-chomper.sh
