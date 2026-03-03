@@ -51,9 +51,9 @@ RUNTIME_PACKS = [
 ]
 
 CANDIDATE_CSPROJ = [
-    SCRIPT_DIR / "src" / "PacmanGame" / "PacmanGame.csproj",
-    SCRIPT_DIR.parent / "src" / "PacmanGame" / "PacmanGame.csproj",
-    Path.cwd() / "src" / "PacmanGame" / "PacmanGame.csproj",
+    SCRIPT_DIR / "src" / "MazeChomperGame" / "MazeChomperGame.csproj",
+    SCRIPT_DIR.parent / "src" / "MazeChomperGame" / "MazeChomperGame.csproj",
+    Path.cwd() / "src" / "MazeChomperGame" / "MazeChomperGame.csproj",
     ]
 
 
@@ -145,7 +145,7 @@ async def main():
 
     csproj = find_csproj()
     if not csproj:
-        print("Error: PacmanGame.csproj not found.")
+        print("Error: MazeChomperGame.csproj not found.")
         sys.exit(1)
 
     print(f"Project: {csproj}")
@@ -155,9 +155,9 @@ async def main():
     if lock_file.exists():
         app_packages = get_packages_from_lock_file(lock_file)
     else:
-        print("\nNo packages.lock.json found. Add this to PacmanGame.csproj:")
+        print("\nNo packages.lock.json found. Add this to MazeChomperGame.csproj:")
         print("  <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>")
-        print("Then run: dotnet restore src/PacmanGame/PacmanGame.csproj\n")
+        print("Then run: dotnet restore src/MazeChomperGame/MazeChomperGame.csproj\n")
         app_packages = get_packages_via_restore(csproj)
 
     # Step 2: Add .NET runtime packs (required for --self-contained linux-x64/arm64)

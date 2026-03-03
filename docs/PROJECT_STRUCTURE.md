@@ -1,6 +1,6 @@
 # 📁 Project Structure
 
-Complete directory structure for Pac-Man Educational Recreation
+Complete directory structure for Arcade Maze Chomper Educational Recreation
 
 ```
 pacman-recreation/
@@ -11,8 +11,8 @@ pacman-recreation/
 │       └── release.yml                   # Release automation
 │
 ├── src/                                  # Source code
-│   └── PacmanGame/
-│       ├── PacmanGame.csproj            # Project file
+│   └── MazeChomperGame/
+│       ├── MazeChomperGame.csproj            # Project file
 │       ├── Program.cs                    # Application entry point
 │       ├── App.axaml                     # Application definition
 │       ├── App.axaml.cs                  # Application code-behind
@@ -136,8 +136,8 @@ pacman-recreation/
 │           └── Colors.axaml
 │
 ├── tests/                                # Test projects
-│   └── PacmanGame.Tests/
-│       ├── PacmanGame.Tests.csproj
+│   └── MazeChomperGame.Tests/
+│       ├── MazeChomperGame.Tests.csproj
 │       ├── Models/
 │       │   └── PacmanTests.cs
 │       ├── Services/
@@ -191,7 +191,7 @@ pacman-recreation/
 ├── LICENSE                               # MIT License
 ├── README.md                             # Main documentation
 ├── CHANGELOG.md                          # Version history
-└── PacmanGame.sln                        # Solution file (optional)
+└── MazeChomperGame.sln                        # Solution file (optional)
 ```
 
 ---
@@ -215,7 +215,7 @@ pacman-recreation/
 | `README.md` | Project overview and quick start |
 | `CHANGELOG.md` | Version history and changes |
 
-### Source (`src/PacmanGame/`)
+### Source (`src/MazeChomperGame/`)
 
 | Directory | Purpose | Examples |
 |-----------|---------|----------|
@@ -328,9 +328,9 @@ obj/                    # Intermediate build files
 During gameplay, the application will create:
 
 ```
-%APPDATA%/PacmanGame/         # Windows
-~/.config/PacmanGame/          # Linux
-~/Library/Application Support/PacmanGame/  # macOS
+%APPDATA%/MazeChomperGame/         # Windows
+~/.config/MazeChomperGame/          # Linux
+~/Library/Application Support/MazeChomperGame/  # macOS
 
 ├── profiles.db                # SQLite database (profiles, scores, settings)
 └── logs/                      # Application logs
@@ -358,7 +358,7 @@ tools/AssetGeneration/output/
 └── ...
 ```
 
-These are then copied to `src/PacmanGame/Assets/`.
+These are then copied to `src/MazeChomperGame/Assets/`.
 
 ---
 
@@ -378,5 +378,5 @@ These are then copied to `src/PacmanGame/Assets/`.
 ---
 
 **Last Updated:** February 2026
-**Project:** Pac-Man Educational Recreation  
+**Project:** Arcade Maze Chomper Educational Recreation  
 **Framework:** .NET 9.0 + Avalonia UI

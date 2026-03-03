@@ -1,6 +1,6 @@
 # Creative Mode
 
-Creative Mode is an in-game level editor for Pac-Man Recreation. It lets you design custom levels, tune gameplay settings, and share projects as `.pacproj` files.
+Creative Mode is an in-game level editor for Arcade Maze Chomper Recreation. It lets you design custom levels, tune gameplay settings, and share projects as `.pacproj` files.
 
 **Release target:** v1.0.1
 
@@ -52,7 +52,7 @@ The Config tab supports:
   - Frightened duration max: 20s (level 1), minus 2s per additional level
   - Fruit points max: 5 (level 1), plus 5 per additional level
   - Ghost eat points max: 30 (level 1), plus 15 per additional level
-- Speed multipliers for Pac-Man and Ghosts with safe bounds to reduce collision clipping risk
+- Speed multipliers for Arcade Maze Chomper and Ghosts with safe bounds to reduce collision clipping risk
 
 ## Export Format
 
@@ -63,7 +63,7 @@ An exported `.pacproj` is a ZIP archive containing:
 
 - Global settings: lives, win score, level count (1-10)
 - Per-level settings:
-  - Pac-Man speed multiplier
+  - Arcade Maze Chomper speed multiplier
   - Ghost speed multiplier
   - Frightened duration (power pellet duration)
   - Fruit points
@@ -73,7 +73,7 @@ An exported `.pacproj` is a ZIP archive containing:
 
 - Increase **Number of Levels** to create a multi-level project.
 - Use **Prev Level / Next Level** to edit each level independently.
-- Newly created levels (2-10) start from a valid template: outer boundary walls, the required 7x5 Ghost House, a Pac-Man spawn, and 4 power pellets.
+- Newly created levels (2-10) start from a valid template: outer boundary walls, the required 7x5 Ghost House, a Arcade Maze Chomper spawn, and 4 power pellets.
 - Export writes `level1.txt`..`levelN.txt` plus `project.json` into a `.pacproj`.
 - Play test and imported projects can run as multi-level sessions in `GameView`.
 
@@ -106,7 +106,7 @@ Map legend:
 - `#` wall
 - `.` small dot
 - `o` / `O` power pellet
-- `P` Pac-Man spawn
+- `P` Arcade Maze Chomper spawn
 - `G` ghost spawn/interior markers (editor)
 - `-` ghost house gate (ghost door)
 - space: empty

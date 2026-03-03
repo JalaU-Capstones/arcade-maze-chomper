@@ -1,6 +1,6 @@
 # Deployment Guide
 
-**Release target:** v1.0.5
+**Release target:** v1.1.0
 
 ## Flathub Submission
 
@@ -28,13 +28,13 @@ When to regenerate:
 - Before submitting to Flathub
 
 ### Flathub Directory Structure
-- `io.github.jalau_capstones.pacman-recreation.yaml`
+- `io.github.jalau_capstones.arcade-maze-chomper.yaml`
 - `generated-sources.json`
 
 The following files are maintained **upstream** (in this repository) and are installed by the manifest directly from the upstream git source:
-- `packaging/flatpak/io.github.jalau_capstones.pacman-recreation.desktop`
-- `packaging/flatpak/io.github.jalau_capstones.pacman-recreation.metainfo.xml`
-- `packaging/flatpak/icons/hicolor/*/apps/io.github.jalau_capstones.pacman-recreation.png`
+- `packaging/flatpak/io.github.jalau_capstones.arcade-maze-chomper.desktop`
+- `packaging/flatpak/io.github.jalau_capstones.arcade-maze-chomper.metainfo.xml`
+- `packaging/flatpak/icons/hicolor/*/apps/io.github.jalau_capstones.arcade-maze-chomper.png`
 
 ### Update Commit Hash
 After each release, update the `commit` field in the manifest with the new commit hash.
@@ -42,7 +42,7 @@ After each release, update the `commit` field in the manifest with the new commi
 ### Submission Process
 1. Fork `flathub/flathub`.
 2. Create a branch with the App ID.
-3. Copy `flathub/io.github.jalau_capstones.pacman-recreation.yaml` and `flathub/generated-sources.json` to the fork.
+3. Copy `flathub/io.github.jalau_capstones.arcade-maze-chomper.yaml` and `flathub/generated-sources.json` to the fork.
 4. Create a Pull Request.
 5. Wait for review and address feedback.
 
@@ -53,12 +53,12 @@ flatpak install flathub org.freedesktop.Sdk//25.08
 flatpak install flathub org.freedesktop.Sdk.Extension.dotnet9//25.08
 flatpak install flathub org.freedesktop.Platform.ffmpeg-full//24.08
 
-flatpak-builder --force-clean --user --install --ccache --repo=repo-dir build-dir io.github.jalau_capstones.pacman-recreation.yaml
+flatpak-builder --force-clean --user --install --ccache --repo=repo-dir build-dir io.github.jalau_capstones.arcade-maze-chomper.yaml
 
-flatpak run io.github.jalau_capstones.pacman-recreation
+flatpak run io.github.jalau_capstones.arcade-maze-chomper
 
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder \
-  manifest io.github.jalau_capstones.pacman-recreation.yaml
+  manifest io.github.jalau_capstones.arcade-maze-chomper.yaml
   
 flatpak run --command=flatpak-builder-lint org.flatpak.Builder repo repo-dir
 ```
@@ -71,7 +71,7 @@ Build command for ARM64:
 ```bash
 flatpak-builder --force-clean --arch=aarch64 \
   --user --install build-dir-arm64 \
-  io.github.jalau_capstones.pacman-recreation.yaml
+  io.github.jalau_capstones.arcade-maze-chomper.yaml
 ```
 
 The manifest automatically handles architecture-specific .NET runtime packs.
@@ -86,7 +86,7 @@ The manifest automatically handles architecture-specific .NET runtime packs.
 
 ## Server Deployment (EC2 + Cloudflare + Custom DNS)
 
-This project ships a UDP relay server (`src/PacmanGame.Server`) that also hosts the Global Top 10 storage service.
+This project ships a UDP relay server (`src/MazeChomperGame.Server`) that also hosts the Global Top 10 storage service.
 
 ### 1) EC2 Instance
 
@@ -101,7 +101,7 @@ This project ships a UDP relay server (`src/PacmanGame.Server`) that also hosts 
 From the repo root:
 
 ```bash
-dotnet publish src/PacmanGame.Server/PacmanGame.Server.csproj -c Release -r linux-x64 --self-contained -o artifacts/server
+dotnet publish src/MazeChomperGame.Server/MazeChomperGame.Server.csproj -c Release -r linux-x64 --self-contained -o artifacts/server
 ```
 
 Copy `artifacts/server` to the instance (example using `scp`):
@@ -125,14 +125,14 @@ Create `/etc/systemd/system/pacman-server.service`:
 
 ```ini
 [Unit]
-Description=Pacman Recreation Relay Server
+Description=Arcade Maze Chomper Relay Server
 After=network.target
 
 [Service]
 Type=simple
 User=pacmanserver
 WorkingDirectory=/opt/pacman-server
-ExecStart=/opt/pacman-server/PacmanGame.Server
+ExecStart=/opt/pacman-server/MazeChomperGame.Server
 Restart=always
 RestartSec=2
 Environment=DOTNET_ENVIRONMENT=Production
@@ -201,7 +201,7 @@ sudo systemctl status pacman-server --no-pager
 
 ### Build Release
 ```bash
-dotnet publish src/PacmanGame/PacmanGame.csproj -c Release -r win-x64 --self-contained
+dotnet publish src/MazeChomperGame/MazeChomperGame.csproj -c Release -r win-x64 --self-contained
 ```
 
 ### Desktop Shortcut (Icon)
@@ -211,7 +211,7 @@ As of `v1.0.1`, shortcut icons resolve correctly by pointing the shortcut icon t
 ### Installation
 Users can install via:
 ```powershell
-winget install CodeWithBotina.PacmanRecreation
+winget install CodeWithBotina.ArcadeMazeChomper
 ```
 
 ### Terminal Command (PATH)
@@ -247,9 +247,9 @@ Copy that folder into a fork of `microsoft/winget-pkgs` and replace `InstallerSh
 Starting with `v1.0.2`, the local profile database is encrypted using SQLCipher.
 
 ### Local Paths
-- Linux (non-Flatpak): `~/.local/share/pacman-recreation/profiles.db`
-- Linux (Flatpak): `${XDG_DATA_HOME}/pacman-recreation/profiles.db` (sandboxed)
-- Windows: `%APPDATA%\\PacmanRecreation\\profiles.db`
+- Linux (non-Flatpak): `~/.local/share/arcade-maze-chomper/profiles.db`
+- Linux (Flatpak): `$[{]XDG_DATA_HOME[}]/arcade-maze-chomper/profiles.db` (sandboxed)
+- Windows: `%APPDATA%\\ArcadeMazeChomper\\profiles.db`
 
 The encryption key is stored per-installation alongside the database as `profiles.db.secret`.
 

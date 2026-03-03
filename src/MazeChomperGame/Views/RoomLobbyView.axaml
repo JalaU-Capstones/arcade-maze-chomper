@@ -1,0 +1,157 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MazeChomperGame.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1156" d:DesignHeight="800"
+             x:Class="MazeChomperGame.Views.RoomLobbyView"
+             x:DataType="vm:RoomLobbyViewModel"
+             x:Name="PageRoot"
+             Background="{DynamicResource AppBackgroundBrush}">
+
+    <UserControl.Styles>
+        <Style Selector="ComboBox.error">
+            <Setter Property="BorderBrush" Value="{DynamicResource AppDangerBrush}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Row 0: Header -->
+        <StackPanel Grid.Row="0" Margin="20" HorizontalAlignment="Center">
+            <TextBlock Text="{Binding RoomName}" FontSize="48" Foreground="{DynamicResource AppAccentBrush}" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding RoomVisibility}" FontSize="16" Foreground="{DynamicResource AppTextDimBrush}" HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Row 1: Main Content (2 columns) -->
+        <Grid Grid.Row="1" ColumnDefinitions="3*,2*" Margin="20">
+
+            <!-- Column 0: Player List -->
+            <Border Grid.Column="0" Background="{DynamicResource AppSurfaceBrush}" BorderBrush="{DynamicResource AppAccentBrush}" BorderThickness="2" CornerRadius="8" Padding="20" Margin="0,0,10,0">
+                <StackPanel>
+                    <TextBlock Text="PLAYERS" FontSize="24" Foreground="{DynamicResource AppAccentBrush}" Margin="0,0,0,20"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="600">
+                        <ItemsControl ItemsSource="{Binding Players}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:PlayerViewModel" x:CompileBindings="False">
+                                    <Border BorderBrush="{DynamicResource AppAccentBrush}" BorderThickness="0,0,0,1" Padding="10">
+                                        <Grid ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto">
+                                            <!-- Player Info -->
+                                            <StackPanel Grid.Column="0" Grid.Row="0" Spacing="5" VerticalAlignment="Center">
+                                                <WrapPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" FontSize="18" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                                    <TextBlock Text="[YOU]" Foreground="{DynamicResource AppInfoBrush}" IsVisible="{Binding IsYou}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                                    <TextBlock Text="[ADMIN]" Foreground="{DynamicResource AppAccentBrush}" IsVisible="{Binding IsAdmin}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                                </WrapPanel>
+                                                <StackPanel Orientation="Horizontal" Spacing="10" IsVisible="{Binding !$parent[UserControl].DataContext.IsAdmin}">
+                                                    <TextBlock Text="Role:" Foreground="{DynamicResource AppTextMutedBrush}"/>
+                                                    <TextBlock Text="{Binding Role}" />
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <!-- Role Selection (Admin Only) -->
+                                            <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                                                <ComboBox ItemsSource="{Binding $parent[UserControl].DataContext.Roles}"
+                                                          SelectedItem="{Binding Role}"
+                                                          IsVisible="{Binding $parent[UserControl].DataContext.IsAdmin}"
+                                                          MinWidth="120"
+                                                          Classes.error="{Binding HasRoleConflict}"/>
+
+                                                <Button Content="KICK"
+                                                        Classes="arcade"
+                                                        Command="{Binding $parent[UserControl].DataContext.KickPlayerCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        IsVisible="{Binding $parent[UserControl].DataContext.IsAdmin}"
+                                                        Foreground="{DynamicResource AppDangerBrush}"/>
+                                            </StackPanel>
+
+                                            <!-- Error Message -->
+                                            <TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"
+                                                       Text="This character is already assigned."
+                                                       Foreground="{DynamicResource AppDangerBrush}" FontSize="12"
+                                                       IsVisible="{Binding HasRoleConflict}"
+                                                       Margin="0,5,0,0"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </StackPanel>
+            </Border>
+
+            <!-- Column 1: Rules Panel -->
+            <Border Grid.Column="1" Background="{DynamicResource AppSurfaceBrush}" BorderBrush="{DynamicResource AppBorderStrongBrush}" BorderThickness="2" CornerRadius="8" Padding="20" Margin="10,0,0,0">
+                <StackPanel Spacing="15">
+                    <TextBlock Text="GAME RULES" FontSize="24" Foreground="{DynamicResource AppAccentBrush}" Margin="0,0,0,10"/>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="Arcade Maze Chomper:" FontWeight="Bold"/> Collect all dots across 3 levels to win. A bonus of 5000 points is awarded for completing the game.
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="Ghosts:" FontWeight="Bold"/> Eliminate Arcade Maze Chomper before he clears the levels. Arcade Maze Chomper has 3 lives.
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="Victory:" FontWeight="Bold"/> The game ends when Arcade Maze Chomper completes Level 3 or when the Ghosts deplete all of Arcade Maze Chomper's lives.
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap">
+                        <Run Text="Respawn:" FontWeight="Bold"/> Eaten ghosts will respawn in the ghost house after 3 seconds.
+                    </TextBlock>
+                    <TextBlock Text="{Binding SpectatorCount, StringFormat='Spectators: {0}/5'}" Foreground="{DynamicResource AppTextMutedBrush}" Margin="0,20,0,0"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+
+        <!-- Row 2: Bottom Controls -->
+        <Border Grid.Row="2" Background="{DynamicResource AppSurfaceBrush}" BorderBrush="{DynamicResource AppAccentBrush}" BorderThickness="0,2,0,0" Padding="20">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20">
+                <Button Content="START GAME"
+                        Command="{Binding StartGameCommand}"
+                        IsVisible="{Binding IsAdmin}"
+                        IsEnabled="{Binding CanStartGame}"
+                        Classes="arcade"
+                        MinWidth="200"/>
+                <Button Content="LEAVE ROOM"
+                        Command="{Binding LeaveRoomCommand}"
+                        Classes="arcade"
+                        MinWidth="200"/>
+                <TextBlock Text="{Binding StatusText}" Foreground="{DynamicResource AppAccentBrush}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Connection error alert -->
+        <Border IsVisible="{Binding IsConnectionAlertVisible}"
+                Background="{DynamicResource AppOverlayBrush}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Grid.RowSpan="3"
+                ZIndex="500">
+            <Border Background="{DynamicResource AppSurfaceBrush}"
+                    BorderBrush="{DynamicResource AppAccentBrush}"
+                    BorderThickness="2"
+                    CornerRadius="10"
+                    Padding="24"
+                    MaxWidth="560"
+                    Margin="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <StackPanel Spacing="16">
+                    <TextBlock Text="{Binding ConnectionAlertMessage}"
+                               FontFamily="{StaticResource ArcadeFont}"
+                               FontSize="22"
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource AppAccentBrush}"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"/>
+                    <Button Classes="arcade"
+                            Content="OK"
+                            Command="{Binding DismissConnectionAlertCommand}"
+                            MinWidth="140"
+                            HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Border>
+
+    </Grid>
+</UserControl>

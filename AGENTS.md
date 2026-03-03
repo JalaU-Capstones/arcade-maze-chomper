@@ -1,6 +1,6 @@
 # AGENTS.md - AI Assistant Context Document
 
-**Project:** Pac-Man Educational Recreation  
+**Project:** Arcade Maze Chomper Educational Recreation  
 **Course:** Programming 3 (CSPR-231) - Universidad Jala  
 **Framework:** .NET 9.0 + Avalonia UI 11.2.3  
 **Timeline:** 4 weeks (Midterm at Week 4, Final at Week 8)  
@@ -28,7 +28,7 @@
 ## Project Overview
 
 ### **Goal**
-Create a fully functional Pac-Man game clone as an educational project to demonstrate:
+Create a fully functional Arcade Maze Chomper game clone as an educational project to demonstrate:
 - Object-Oriented Programming (OOP) mastery
 - MVVM architectural pattern implementation
 - Cross-platform desktop development
@@ -58,7 +58,7 @@ Create a fully functional Pac-Man game clone as an educational project to demons
 
 **Functional Requirements:**
 1. Main menu with navigation
-2. Basic Pac-Man movement (arrow keys)
+2. Basic Arcade Maze Chomper movement (arrow keys)
 3. Simple maze rendering (static)
 4. 2-3 ghosts with **simple AI** (random or basic pattern movement)
 5. Collision detection (walls, dots, ghosts)
@@ -82,11 +82,11 @@ Create a fully functional Pac-Man game clone as an educational project to demons
 ### **Final Delivery (Week 8) - 50% Grade**
 
 **Functional Requirements:**
-1. Complete Pac-Man gameplay
+1. Complete Arcade Maze Chomper gameplay
 2. 4 ghosts with **unique AI behaviors**:
-   - **Blinky (Red):** Direct chase - Always targets Pac-Man's current position
-   - **Pinky (Pink):** Ambush - Targets 4 tiles ahead of Pac-Man
-   - **Inky (Cyan):** Flanking - Complex behavior based on Blinky and Pac-Man
+   - **Blinky (Red):** Direct chase - Always targets Arcade Maze Chomper's current position
+   - **Pinky (Pink):** Ambush - Targets 4 tiles ahead of Arcade Maze Chomper
+   - **Inky (Cyan):** Flanking - Complex behavior based on Blinky and Arcade Maze Chomper
    - **Clyde (Orange):** Shy - Chases when far, scatters when close
 3. Power pellet mechanic (ghosts become vulnerable)
 4. Bonus fruits with point values
@@ -217,8 +217,8 @@ xUnit + Moq (planned)
 pacman-recreation/
 ├── .github/                      # GitHub workflows (CI/CD)
 ├── src/
-│   └── PacmanGame/
-│       ├── PacmanGame.csproj    # Project file (.NET 9.0)
+│   └── MazeChomperGame/
+│       ├── MazeChomperGame.csproj    # Project file (.NET 9.0)
 │       ├── Program.cs            # Entry point
 │       ├── App.axaml(.cs)        # Application definition
 │       │
@@ -291,7 +291,7 @@ pacman-recreation/
 │           └── ButtonStyles.axaml # Arcade button styles
 │
 ├── tests/
-│   └── PacmanGame.Tests/         # Unit tests
+│   └── MazeChomperGame.Tests/         # Unit tests
 │
 ├── tools/
 │   └── AssetGeneration/          # Python scripts (REFERENCE ONLY)
@@ -339,7 +339,7 @@ pacman-recreation/
 
 **Naming Conventions:**
 ```
-pacman_right_0        -> Pac-Man facing right, frame 0
+pacman_right_0        -> Arcade Maze Chomper facing right, frame 0
 ghost_blinky_up_1     -> Blinky facing up, frame 1
 ghost_vulnerable_0    -> Vulnerable ghost (blue)
 ghost_eyes_left       -> Eyes returning to base
@@ -360,7 +360,7 @@ tile_wall_horizontal  -> Wall tile
 - `eat-power-pellet.wav` - Eating power pellet
 - `eat-ghost.wav` - Eating ghost
 - `eat-fruit.wav` - Eating fruit
-- `death.wav` - Pac-Man death
+- `death.wav` - Arcade Maze Chomper death
 - `extra-life.wav` - Extra life gained
 - `game-start.wav` - Level start
 - `level-complete.wav` - Level completed
@@ -377,7 +377,7 @@ tile_wall_horizontal  -> Wall tile
 - `#` = Wall (TileType.Wall)
 - `.` = Small Dot (+10 points)
 - `o` = Power Pellet (+50 points)
-- `P` = Pac-Man spawn (exactly 1)
+- `P` = Arcade Maze Chomper spawn (exactly 1)
 - `G` = Ghost spawn (4-6 positions)
 - `-` = Ghost house door
 - `F` = Fruit spawn
@@ -408,7 +408,7 @@ tile_wall_horizontal  -> Wall tile
 | **Documentation** | Completed | - | README, ARCHITECTURE, etc. |
 | **GameEngine** | Completed | ~300 | Game loop, entity updates |
 | **Rendering System** | Completed | ~150 | Canvas rendering |
-| **Pac-Man Movement** | Completed | ~100 | Player movement logic |
+| **Arcade Maze Chomper Movement** | Completed | ~100 | Player movement logic |
 | **AudioManager** | Completed | ~200 | SFML.Audio integration |
 | **Score/Profile Persistence** | Completed | ~250 | SQLite database management |
 | **Advanced Ghost AI** | Completed | ~400 | Unique AI for all 4 ghosts |
@@ -448,13 +448,13 @@ tile_wall_horizontal  -> Wall tile
    {
        // 1. Draw map tiles
        // 2. Draw collectibles
-       // 3. Draw Pac-Man
+       // 3. Draw Arcade Maze Chomper
        // 4. Draw ghosts
        // 5. Draw HUD
    }
    ```
 
-3. **Pac-Man Movement**
+3. **Arcade Maze Chomper Movement**
    - Arrow key input
    - Smooth movement (not instant)
    - Wall collision
@@ -462,15 +462,15 @@ tile_wall_horizontal  -> Wall tile
 
 4. **Simple Ghost AI (2-3 ghosts)**
    - **Option A:** Random movement
-   - **Option B:** Simple chase (move toward Pac-Man)
+   - **Option B:** Simple chase (move toward Arcade Maze Chomper)
    - **Option C:** Pattern movement (predefined paths)
    
    **Recommendation:** Use Option A (random) for Midterm, implement full AI for Final
 
 5. **Collision Detection**
-   - Pac-Man vs Walls
-   - Pac-Man vs Dots (collect + score)
-   - Pac-Man vs Ghosts (lose life)
+   - Arcade Maze Chomper vs Walls
+   - Arcade Maze Chomper vs Dots (collect + score)
+   - Arcade Maze Chomper vs Ghosts (lose life)
    
 6. **Score System**
    - Small dot = +10
@@ -508,15 +508,15 @@ tile_wall_horizontal  -> Wall tile
 
 #### **Blinky (Red) - "Shadow"**
 ```
-Chase: Target = Pac-Man's current position
+Chase: Target = Arcade Maze Chomper's current position
 Scatter: Target = Top-right corner (0, 27)
 Speed: Fastest (100% base speed)
 ```
 
 #### **Pinky (Pink) - "Speedy"**
 ```
-Chase: Target = 4 tiles ahead of Pac-Man's direction
-  - If Pac-Man facing up: target (pacman.Y - 4, pacman.X)
+Chase: Target = 4 tiles ahead of Arcade Maze Chomper's direction
+  - If Arcade Maze Chomper facing up: target (pacman.Y - 4, pacman.X)
   - Account for direction
 Scatter: Target = Top-left corner (0, 0)
 Speed: 95% base speed
@@ -525,7 +525,7 @@ Speed: 95% base speed
 #### **Inky (Cyan) - "Bashful"**
 ```
 Chase: Complex calculation
-  1. Get point 2 tiles ahead of Pac-Man
+  1. Get point 2 tiles ahead of Arcade Maze Chomper
   2. Draw vector from Blinky to that point
   3. Double the vector length
   4. That's Inky's target
@@ -536,7 +536,7 @@ Speed: 95% base speed
 #### **Clyde (Orange) - "Pokey"**
 ```
 Chase: 
-  - If distance to Pac-Man > 8 tiles: target Pac-Man
+  - If distance to Arcade Maze Chomper > 8 tiles: target Arcade Maze Chomper
   - If distance <= 8 tiles: scatter
 Scatter: Target = Bottom-left corner (30, 0)
 Speed: 90% base speed
@@ -736,7 +736,7 @@ MapsPath = "Assets/Maps"
 ```
 Create a GameEngine service that:
 1. Runs at 60 FPS using DispatcherTimer
-2. Updates all entities (Pac-Man, ghosts, collectibles)
+2. Updates all entities (Arcade Maze Chomper, ghosts, collectibles)
 3. Checks collisions
 4. Updates timers (power pellet, etc.)
 5. Triggers rendering
@@ -751,20 +751,20 @@ In GameView.axaml.cs, implement rendering on the Canvas:
 1. Clear canvas each frame
 2. Draw tiles using SpriteManager.GetTileSprite()
 3. Draw collectibles (only if IsActive)
-4. Draw Pac-Man with current animation frame
+4. Draw Arcade Maze Chomper with current animation frame
 5. Draw ghosts with correct sprite based on state
 
 Use Constants.TileSize (32px) for positioning.
 Performance: reuse Image controls rather than recreating each frame.
 ```
 
-#### **Task 3: Implement Pac-Man Movement**
+#### **Task 3: Implement Arcade Maze Chomper Movement**
 ```
 In GameViewModel or GameEngine:
 1. Listen for arrow key input from GameView
 2. Set Pacman.NextDirection
 3. In Update loop, check if can turn (using CollisionDetector)
-4. Move Pac-Man smoothly (interpolate between tiles)
+4. Move Arcade Maze Chomper smoothly (interpolate between tiles)
 5. Handle tunnel wrapping (teleport between edges)
 
 Use Pacman.CanMove() method.
@@ -785,12 +785,12 @@ This is a placeholder for the final AI implementations.
 #### **Task 5: Implement Collision Handling**
 ```
 In GameEngine.Update():
-1. Check Pac-Man vs Dots collision
+1. Check Arcade Maze Chomper vs Dots collision
    - Collect dot (set IsActive = false)
    - Add score
    - Play chomp sound
-2. Check Pac-Man vs Ghost collision
-   - If Pac-Man invulnerable: eat ghost
+2. Check Arcade Maze Chomper vs Ghost collision
+   - If Arcade Maze Chomper invulnerable: eat ghost
    - Else: lose life, reset positions
 3. Check if all dots collected (win condition)
 
@@ -805,7 +805,7 @@ Create a ScoreManager service:
 3. IsHighScore(int score) - check if qualifies
 
 File format: "name,score,level,date" (CSV)
-Save to: AppData/PacmanGame/scores.txt
+Save to: AppData/MazeChomperGame/scores.txt
 Handle file not existing (create with defaults).
 ```
 
@@ -825,7 +825,7 @@ Handle exceptions gracefully.
 #### **Task 8: Implement Blinky AI (Chase)**
 ```
 Create BlinkyAI implementing IGhostAI:
-1. In Chase mode: target Pac-Man's current tile
+1. In Chase mode: target Arcade Maze Chomper's current tile
 2. In Scatter mode: target top-right corner (0, 27)
 3. Use A* pathfinding to navigate
 4. Switch modes every 20 seconds
@@ -851,7 +851,7 @@ Use CollisionDetector for valid moves.
 ### **Common Pitfalls**
 
 1. **Sprite Loading:**
-   - Always use `avares://PacmanGame/...` URIs
+   - Always use `avares://MazeChomperGame/...` URIs
    - Crop requires unsafe code (already implemented)
 
 2. **Collision Detection:**
@@ -874,7 +874,7 @@ Use CollisionDetector for valid moves.
 dotnet build
 
 # Run
-dotnet run --project src/PacmanGame/PacmanGame.csproj
+dotnet run --project src/MazeChomperGame/MazeChomperGame.csproj
 
 # Clean
 dotnet clean
@@ -928,7 +928,7 @@ This project is for educational purposes. While AI assistance is permitted:
 **For Midterm (Week 4):**
 1. Implement GameEngine with 60 FPS loop
 2. Implement rendering system on Canvas
-3. Implement Pac-Man movement
+3. Implement Arcade Maze Chomper movement
 4. Implement simple ghost AI (random movement)
 5. Implement collision handling
 6. Test and debug

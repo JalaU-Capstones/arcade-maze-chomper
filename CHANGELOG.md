@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 03-03-2026
+
+### Changed
+- Rebranded application name to **Arcade Maze Chomper**.
+- Renamed .NET solution/projects/namespaces from `PacmanGame` to `MazeChomperGame`.
+- Updated Flatpak app-id to `io.github.jalau_capstones.arcade-maze-chomper`.
+- Updated Flatpak command to `arcade-maze-chomper`.
+
 ## [1.0.2] - 24-02-2026
 
 ### Fixed
@@ -61,7 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Global UI theme resources applied for consistent contrast (no white-on-white).
 - Ghost frightened behavior now uses random movement (prefer non-reverse) and slowed speed for authentic feel.
 - Eaten ghosts now return to the ghost house base before respawning (no teleport respawns).
-- Level speed progression rebalanced: slower Level 1, consistent increases for Levels 2-3, Pac-Man slightly faster than ghosts in straight lines.
+- Level speed progression rebalanced: slower Level 1, consistent increases for Levels 2-3, Arcade Maze Chomper slightly faster than ghosts in straight lines.
 
 ### Fixed
 - Window sizing issues where content exceeded the screen (common in VMs).
@@ -78,12 +86,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Single-player mode with 3 levels
-- Classic Pac-Man gameplay with original maze design
+- Classic Arcade Maze Chomper gameplay with original maze design
 - Ghost AI with authentic behaviors (Blinky, Pinky, Inky, Clyde)
 - Power pellets with temporary ghost vulnerability
 - Multiplayer mode supporting up to 5 players
 - Room system with public and private rooms
-- Player role assignment (Pac-Man, Blinky, Pinky, Inky, Clyde, Spectator)
+- Player role assignment (Arcade Maze Chomper, Blinky, Pinky, Inky, Clyde, Spectator)
 - Profile system with SQLite database
 - Score tracking and leaderboards
 - Audio system with background music and sound effects

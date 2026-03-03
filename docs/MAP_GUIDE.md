@@ -1,4 +1,4 @@
-# 🗺️ Pac-Man Map Guide
+# 🗺️ Arcade Maze Chomper Map Guide
 
 ## 📋 Table of Contents
 1. [Map Format](#map-format)
@@ -12,7 +12,7 @@
 
 ## 🎮 Map Format
 
-Pac-Man maps are stored in plain text files (.txt) where each character represents a game element.
+Arcade Maze Chomper maps are stored in plain text files (.txt) where each character represents a game element.
 
 ### Standard Dimensions:
 - **Width:** 28 characters (columns)
@@ -25,10 +25,10 @@ Pac-Man maps are stored in plain text files (.txt) where each character represen
 
 | Character | Element | Description | Behavior |
 |-----------|---------|-------------|----------|
-| `#` | **Wall** | Maze wall | Blocks Pac-Man and ghost movement |
-| `.` | **Small Dot** | Energizer pill | +10 points, Pac-Man can pass through |
+| `#` | **Wall** | Maze wall | Blocks Arcade Maze Chomper and ghost movement |
+| `.` | **Small Dot** | Energizer pill | +10 points, Arcade Maze Chomper can pass through |
 | `o` | **Power Pellet** | Large dot | +50 points, makes ghosts vulnerable |
-| `P` | **Pac-Man** | Player start position | Replaced by empty space at start |
+| `P` | **Arcade Maze Chomper** | Player start position | Replaced by empty space at start |
 | `G` | **Ghost** | Ghost start position | Replaced by empty space at start |
 | `-` | **Door** | Ghost house door | Only ghosts can pass through |
 | `F` | **Fruit** | Optional bonus | +100 to +1000 points depending on type |
@@ -63,7 +63,7 @@ Pac-Man maps are stored in plain text files (.txt) where each character represen
    - One door `-` for entry/exit
    - 6 `G` positions for ghosts
 
-3. **Pac-Man Position:**
+3. **Arcade Maze Chomper Position:**
    - There must be only **ONE** `P` character in the entire map
    - Generally in the lower part of the maze
    - Surrounded by free space for initial movement
@@ -85,7 +85,7 @@ Pac-Man maps are stored in plain text files (.txt) where each character represen
 ```
 Difficulty: ⭐⭐☆☆☆ (Easy)
 Features:
-- Classic original Pac-Man design
+- Classic original Arcade Maze Chomper design
 - Wide corridors
 - 4 power pellets in corners
 - Central ghost house
@@ -180,11 +180,11 @@ Tips:
 - 4 Power Pellets (o) in strategic corners
 - Leave empty spaces in:
   * Ghost house
-  * Around Pac-Man's starting position
+  * Around Arcade Maze Chomper's starting position
   * Side tunnels (optional)
 ```
 
-### Step 6: Place Pac-Man
+### Step 6: Place Arcade Maze Chomper
 ```
 - A single P character
 - In a safe zone (far from ghosts)
@@ -192,11 +192,11 @@ Tips:
 - With maneuvering space
 ```
 
-### Example of Pac-Man Start Area:
+### Example of Arcade Maze Chomper Start Area:
 ```
 #......##....##....##......#
 #.##########.##.##########.#
-#..........P.##............#  ← Pac-Man here
+#..........P.##............#  ← Arcade Maze Chomper here
 ############################
 ```
 
@@ -212,7 +212,7 @@ Tips:
 - [ ] All rows have the same length
 
 **Mandatory Elements:**
-- [ ] 1 Pac-Man (`P`)
+- [ ] 1 Arcade Maze Chomper (`P`)
 - [ ] 4-6 Ghosts (`G`)
 - [ ] 1 Door (`-`)
 - [ ] 4 Power Pellets (`o`) minimum
@@ -228,7 +228,7 @@ Tips:
 - [ ] All corridors are connected
 - [ ] No isolated areas without access
 - [ ] Ghost house accessible only by door
-- [ ] Pac-Man can reach all dots
+- [ ] Arcade Maze Chomper can reach all dots
 
 **Ghost House:**
 - [ ] Center of the map (approximately)
@@ -391,7 +391,7 @@ Level 1 Example:
 
 ## 🔗 References
 
-- Original Pac-Man: 28×31 cells
+- Original Arcade Maze Chomper: 28×31 cells
 - Ghost House: Always central
 - Power Pellets: Traditionally 4 in corners
 - Classic Design: Vertically symmetric
@@ -399,6 +399,6 @@ Level 1 Example:
 ---
 
 **Author:** Diego Alejandro  
-**Project:** Pac-Man Educational Recreation  
+**Project:** Arcade Maze Chomper Educational Recreation  
 **Date:** 2026  
 **License:** MIT

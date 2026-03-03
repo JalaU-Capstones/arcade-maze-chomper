@@ -18,7 +18,7 @@ jobs:
 
       - name: Publish Windows
         run: |
-          dotnet publish src/PacmanGame/PacmanGame.csproj \
+          dotnet publish src/MazeChomperGame/MazeChomperGame.csproj \
             -c Release \
             -r win-x64 \
             --self-contained \
@@ -28,13 +28,13 @@ jobs:
       - name: Create Windows ZIP
         run: |
           cd artifacts/windows
-          zip -r ../../PacmanRecreation-Windows-${{ github.ref_name }}.zip *
+          zip -r ../../ArcadeMazeChomper-Windows-${{ github.ref_name }}.zip *
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v4
         with:
           name: windows-build
-          path: PacmanRecreation-Windows-${{ github.ref_name }}.zip
+          path: ArcadeMazeChomper-Windows-${{ github.ref_name }}.zip
 
   build-linux:
     runs-on: ubuntu-latest
@@ -48,7 +48,7 @@ jobs:
 
       - name: Publish Linux
         run: |
-          dotnet publish src/PacmanGame/PacmanGame.csproj \
+          dotnet publish src/MazeChomperGame/MazeChomperGame.csproj \
             -c Release \
             -r linux-x64 \
             --self-contained \
@@ -57,13 +57,13 @@ jobs:
       - name: Create Linux Archive
         run: |
           cd artifacts/linux
-          tar -czf ../../PacmanRecreation-Linux-${{ github.ref_name }}.tar.gz *
+          tar -czf ../../ArcadeMazeChomper-Linux-${{ github.ref_name }}.tar.gz *
 
       - name: Upload Linux Artifact
         uses: actions/upload-artifact@v4
         with:
           name: linux-build
-          path: PacmanRecreation-Linux-${{ github.ref_name }}.tar.gz
+          path: ArcadeMazeChomper-Linux-${{ github.ref_name }}.tar.gz
 
   create-release:
     needs: [build-windows, build-linux]
@@ -87,8 +87,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            PacmanRecreation-Windows-${{ github.ref_name }}.zip
-            PacmanRecreation-Linux-${{ github.ref_name }}.tar.gz
+            ArcadeMazeChomper-Windows-${{ github.ref_name }}.zip
+            ArcadeMazeChomper-Linux-${{ github.ref_name }}.tar.gz
           body: |
             See [CHANGELOG.md](https://github.com/JalaU-Capstones/pacman-recreation/blob/main/CHANGELOG.md) for details.
 
@@ -96,12 +96,12 @@ jobs:
 
             ### Windows
             ```powershell
-            winget install CodeWithBotina.PacmanRecreation
+            winget install CodeWithBotina.ArcadeMazeChomper
             ```
 
             ### Linux
             ```bash
-            flatpak install flathub io.github.jalau_capstones.pacman-recreation
+            flatpak install flathub io.github.jalau_capstones.arcade-maze-chomper
             ```
           draft: false
           prerelease: false

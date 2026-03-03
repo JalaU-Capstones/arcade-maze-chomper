@@ -13,13 +13,13 @@ This document describes the testing strategy and how to run tests.
 
 ### Unit Tests
 
-**Client Tests (`tests/PacmanGame.Tests/`):**
+**Client Tests (`tests/MazeChomperGame.Tests/`):**
 - Game engine logic (collision, movement, scoring)
 - Ghost AI (pathfinding, behavior modes)
 - ViewModels (navigation, commands, state management)
 - Services (audio, sprites, profiles, networking)
 
-**Server Tests (`tests/PacmanGame.Server.Tests/`):**
+**Server Tests (`tests/MazeChomperGame.Server.Tests/`):**
 - Relay server (room management, message handling)
 - Game simulation (entity movement, collision, state updates)
 - Room manager (player management, role assignment)
@@ -42,8 +42,8 @@ dotnet test
 ### Run Specific Test Project
 
 ```bash
-dotnet test tests/PacmanGame.Tests
-dotnet test tests/PacmanGame.Server.Tests
+dotnet test tests/MazeChomperGame.Tests
+dotnet test tests/MazeChomperGame.Server.Tests
 ```
 
 ### Run Specific Test Class

@@ -7,12 +7,12 @@ This project uses `Microsoft.Extensions.Logging` for runtime diagnostics.
 The app writes to a text file named `pacman.log` (appends across runs).
 
 - Windows (Roaming AppData):
-  - `%APPDATA%\\PacmanRecreation\\logs\\pacman.log`
-  - Example: `C:\\Users\\JohnDoe\\AppData\\Roaming\\PacmanRecreation\\logs\\pacman.log`
+  - `%APPDATA%\\ArcadeMazeChomper\\logs\\pacman.log`
+  - Example: `C:\\Users\\JohnDoe\\AppData\\Roaming\\ArcadeMazeChomper\\logs\\pacman.log`
 - Linux (non-Flatpak):
-  - `~/.local/share/pacman-recreation/logs/pacman.log`
+  - `~/.local/share/arcade-maze-chomper/logs/pacman.log`
 - Linux (Flatpak):
-  - `$XDG_DATA_HOME/pacman-recreation/logs/pacman.log` (sandboxed)
+  - `$XDG_DATA_HOME/arcade-maze-chomper/logs/pacman.log` (sandboxed)
 
 The `logs/` directory is created automatically.
 
@@ -22,9 +22,9 @@ When launching the app from a terminal, logs also print to stdout.
 
 - Windows:
   - Run from PowerShell or CMD to see console logs:
-    - `dotnet run --project src\\PacmanGame\\PacmanGame.csproj`
+    - `dotnet run --project src\\MazeChomperGame\\MazeChomperGame.csproj`
 - Linux:
-  - `dotnet run --project src/PacmanGame/PacmanGame.csproj`
+  - `dotnet run --project src/MazeChomperGame/MazeChomperGame.csproj`
 
 ---
 
@@ -43,12 +43,12 @@ Each entry in the `pacman.log` file follows a consistent format:
 Example log entries:
 
 ```
-[2026-02-10 18:45:32] [INFO] [PacmanGame.ViewModels.GameViewModel] Game started - Level 1
-[2026-02-10 18:45:33] [INFO] [PacmanGame.Services.AudioManager] Audio system initialized successfully
-[2026-02-10 18:45:35] [ERROR] [PacmanGame.Services.SpriteManager] Failed to load sprite 'ghost_blinky_up_3': File not found
-[2026-02-10 18:45:40] [WARNING] [PacmanGame.Services.GameEngine] Ghost pathfinding failed - using fallback random move
-[2026-02-10 18:46:12] [INFO] [PacmanGame.Services.GameEngine] Power pellet collected - Ghosts now vulnerable
-[2026-02-10 18:46:15] [DEBUG] [PacmanGame.Services.AI.BlinkyAI] Blinky target=(0,27) mode=Scatter
+[2026-02-10 18:45:32] [INFO] [MazeChomperGame.ViewModels.GameViewModel] Game started - Level 1
+[2026-02-10 18:45:33] [INFO] [MazeChomperGame.Services.AudioManager] Audio system initialized successfully
+[2026-02-10 18:45:35] [ERROR] [MazeChomperGame.Services.SpriteManager] Failed to load sprite 'ghost_blinky_up_3': File not found
+[2026-02-10 18:45:40] [WARNING] [MazeChomperGame.Services.GameEngine] Ghost pathfinding failed - using fallback random move
+[2026-02-10 18:46:12] [INFO] [MazeChomperGame.Services.GameEngine] Power pellet collected - Ghosts now vulnerable
+[2026-02-10 18:46:15] [DEBUG] [MazeChomperGame.Services.AI.BlinkyAI] Blinky target=(0,27) mode=Scatter
 ```
 
 ---
@@ -113,7 +113,7 @@ The `pacman.log` file is designed to append new entries on each application run.
 
 -   **`[ERROR] Database initialization failed: [exception]`**:
     -   **Meaning:** The application failed to create or connect to the `profiles.db` SQLite database.
-    -   **Action:** Check file permissions in the `AppData/PacmanGame` directory. Ensure no other process is locking the database file.
+    -   **Action:** Check file permissions in the `AppData/MazeChomperGame` directory. Ensure no other process is locking the database file.
 
 -   **`[WARNING] Sound effect file not found: [filename]`**:
     -   **Meaning:** A specific sound effect `.wav` file was requested but not found. The game will continue without that sound.

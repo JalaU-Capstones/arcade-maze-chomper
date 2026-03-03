@@ -3,13 +3,13 @@ from PIL import Image, ImageDraw
 
 def draw_pacman(size):
     """
-    Draws a Pac-Man icon at the specified size.
+    Draws a Arcade Maze Chomper icon at the specified size.
 
     Args:
         size (int): Size of the icon (width and height)
 
     Returns:
-        Image: PIL Image object with Pac-Man drawn
+        Image: PIL Image object with Arcade Maze Chomper drawn
     """
     # Create image with transparent background
     img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
@@ -19,10 +19,10 @@ def draw_pacman(size):
     margin = size // 10  # 10% margin
     diameter = size - (2 * margin)
 
-    # Pac-Man body (yellow circle with mouth)
+    # Arcade Maze Chomper body (yellow circle with mouth)
     body_bbox = [margin, margin, margin + diameter, margin + diameter]
 
-    # Draw yellow circle (Pac-Man body)
+    # Draw yellow circle (Arcade Maze Chomper body)
     # Mouth angle: 30 degrees open
     draw.pieslice(body_bbox, 30, 330, fill='#FFFF00', outline='#FFD700', width=max(1, size // 50))
 
@@ -40,14 +40,14 @@ def generate_all_icons():
     Generates all required icons for the application.
     Creates icons from scratch without needing external images.
     """
-    print("Pacman Recreation - Icon Generator")
+    print("Arcade Maze Chomper - Icon Generator")
     print("=" * 50)
     print("Generating icons from scratch...\n")
 
     # Define paths
     script_dir = os.path.dirname(os.path.abspath(__file__))
     base_dir = os.path.dirname(os.path.dirname(script_dir))
-    assets_dir = os.path.join(base_dir, "src", "PacmanGame", "Assets")
+    assets_dir = os.path.join(base_dir, "src", "MazeChomperGame", "Assets")
     flatpak_icons_dir = os.path.join(base_dir, "flatpak", "icons")
 
     # Ensure directories exist
@@ -88,7 +88,7 @@ def generate_all_icons():
 
     # Generate Flatpak hicolor icons
     flatpak_sizes = [64, 128, 256, 512]
-    app_id = "com.codewithbotina.PacmanRecreation"
+    app_id = "com.codewithbotina.ArcadeMazeChomper"
 
     for size in flatpak_sizes:
         size_dir = os.path.join(flatpak_icons_dir, f"{size}x{size}")

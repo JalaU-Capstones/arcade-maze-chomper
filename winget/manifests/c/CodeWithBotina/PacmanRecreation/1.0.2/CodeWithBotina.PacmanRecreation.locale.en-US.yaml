@@ -1,12 +1,12 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.10.0.schema.json
 
-PackageIdentifier: CodeWithBotina.PacmanRecreation
+PackageIdentifier: CodeWithBotina.ArcadeMazeChomper
 PackageVersion: 1.0.2
 PackageLocale: en-US
 Publisher: CodeWithBotina
-PackageName: Pacman Recreation
+PackageName: Arcade Maze Chomper
 License: MIT
-ShortDescription: A faithful recreation of the classic Pac-Man arcade game, built as an educational project.
+ShortDescription: A faithful recreation of the classic Arcade Maze Chomper arcade game, built as an educational project.
 Tags:
   - pacman
   - game

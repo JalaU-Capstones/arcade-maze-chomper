@@ -1,0 +1,132 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MazeChomperGame.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="896" d:DesignHeight="1024"
+             x:Class="MazeChomperGame.Views.MainMenuView"
+             x:DataType="vm:MainMenuViewModel"
+             Background="{DynamicResource AppBackgroundBrush}">
+
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/ButtonStyles.axaml" />
+    </UserControl.Styles>
+
+    <Grid>
+        <!-- Main menu container -->
+        <!-- Limit the width so content scales well on large screens and fits on small screens -->
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="25"
+                    MaxWidth="480">
+
+            <!-- Game title -->
+            <TextBlock Text="PAC-MAN"
+                      FontSize="80"
+                      FontWeight="ExtraBold"
+                      Foreground="{DynamicResource AppAccentBrush}"
+                      HorizontalAlignment="Center"
+                      FontFamily="{StaticResource ArcadeFont}"
+                      Margin="0,0,0,30">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="{StaticResource AppColorBorderStrong}"
+                                     BlurRadius="20"
+                                     OffsetX="0"
+                                     OffsetY="0"/>
+                </TextBlock.Effect>
+            </TextBlock>
+
+            <!-- Subtitle -->
+            <TextBlock Text="EDUCATIONAL RECREATION"
+                      FontSize="16"
+                      HorizontalAlignment="Center"
+                      Margin="0,0,0,10"
+                      FontFamily="{StaticResource ArcadeFont}"/>
+
+            <!-- Press Start animation -->
+            <TextBlock Text="PRESS START"
+                      FontSize="18"
+                      HorizontalAlignment="Center"
+                      Margin="0,0,0,50"
+                      FontFamily="{StaticResource ArcadeFont}">
+                <!-- TODO: Add blinking animation -->
+            </TextBlock>
+
+            <!-- Menu buttons -->
+            <Button Classes="arcade"
+                    Command="{Binding StartGameCommand}"
+                    HorizontalAlignment="Stretch">
+                <TextBlock Text="START GAME"
+                           FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"/>
+            </Button>
+
+            <Button Classes="arcade"
+                    Command="{Binding ShowScoreBoardCommand}"
+                    HorizontalAlignment="Stretch">
+                <TextBlock Text="SCORE BOARD"
+                           FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"/>
+            </Button>
+
+            <Button Classes="arcade"
+                    Command="{Binding ShowMultiplayerCommand}"
+                    HorizontalAlignment="Stretch">
+                <TextBlock Text="MULTIPLAYER"
+                           FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"/>
+            </Button>
+
+            <Button Classes="arcade"
+                    Command="{Binding ShowSettingsCommand}"
+                    HorizontalAlignment="Stretch">
+                <TextBlock Text="SETTINGS"
+                           FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"/>
+            </Button>
+
+            <Button Classes="arcade"
+                    Command="{Binding ExitCommand}"
+                    HorizontalAlignment="Stretch">
+                <TextBlock Text="EXIT"
+                           FontFamily="{Binding FontFamily, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                           FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           TextAlignment="Center"/>
+            </Button>
+
+            <!-- Footer -->
+            <TextBlock Text="© 2026 - Programming 3 Project"
+                      FontSize="12"
+                      Foreground="{DynamicResource AppTextSubtleBrush}"
+                      HorizontalAlignment="Center"
+                      Margin="0,40,0,0"
+                      FontFamily="{StaticResource ArcadeFont}"/>
+
+            <TextBlock Text=".NET 9.0 + Avalonia UI"
+                      FontSize="10"
+                      Foreground="{DynamicResource AppTextSubtleBrush}"
+                      HorizontalAlignment="Center"
+                      FontFamily="{StaticResource ArcadeFont}"/>
+        </StackPanel>
+    </Grid>
+
+</UserControl>
