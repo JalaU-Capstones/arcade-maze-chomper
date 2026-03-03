@@ -17,6 +17,25 @@ finish-args:
   - --socket=pulseaudio
   - --share=network
 modules:
+  - name: flac
+    buildsystem: autotools
+    config-opts:
+      - --prefix=/app
+      - --disable-static
+      - --enable-shared
+      - --disable-ogg
+      - --disable-cpplibs
+      - --disable-xmms-plugin
+    cleanup:
+      - /bin
+      - /share/doc
+      - /share/info
+      - /share/man
+    sources:
+      - type: archive
+        url: https://downloads.xiph.org/releases/flac/flac-1.3.4.tar.xz
+        sha256: 8ff0607e75a322dd7cd6ec48f4f225471404ae2730d0ea945127b1355155e737
+
   - name: pacman-recreation
     buildsystem: simple
     build-commands:
@@ -42,7 +61,6 @@ modules:
           /p:TargetLatestRuntimePatch=true
 
       # 2. Native library fixes adapted to ANY architecture
-      - find /usr/lib/$(gcc -print-multiarch) -name "libFLAC.so.*" -exec ln -sf {} /app/lib/pacman-recreation/libFLAC.so.8 \;
       - cd /app/lib/pacman-recreation && ln -sf libcsfml-audio.so csfml-audio
       - cd /app/lib/pacman-recreation && ln -sf libcsfml-system.so csfml-system
 
