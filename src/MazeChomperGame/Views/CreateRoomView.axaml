@@ -1,0 +1,93 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MazeChomperGame.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="896" d:DesignHeight="1024"
+             x:Class="MazeChomperGame.Views.CreateRoomView"
+             x:DataType="vm:CreateRoomViewModel"
+             Background="{DynamicResource AppBackgroundBrush}">
+
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/ButtonStyles.axaml" />
+        <Style Selector="TextBox">
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="5"/>
+        </Style>
+        <Style Selector="RadioButton">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </UserControl.Styles>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Spacing="20"
+                    MaxWidth="480">
+
+            <TextBlock Text="CREATE ROOM"
+                       FontSize="60"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AppAccentBrush}"
+                       HorizontalAlignment="Center"
+                       FontFamily="{StaticResource ArcadeFont}"
+                       Margin="0,0,0,40">
+            <TextBlock.Effect>
+                    <DropShadowEffect Color="{StaticResource AppColorBorderStrong}" BlurRadius="15"/>
+            </TextBlock.Effect>
+        </TextBlock>
+
+            <TextBox Text="{Binding RoomName}" Watermark="Room Name" />
+
+            <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center">
+                <RadioButton Content="Public" IsChecked="{Binding IsPublic}" GroupName="Visibility"/>
+                <RadioButton Content="Private" IsChecked="{Binding IsPrivate}" GroupName="Visibility"/>
+            </StackPanel>
+
+            <TextBox Text="{Binding Password}" Watermark="Password" IsVisible="{Binding IsPrivate}" />
+
+            <TextBlock Text="{Binding ErrorMessage}"
+                       Foreground="{DynamicResource AppDangerBrush}"
+                       IsVisible="{Binding !!ErrorMessage}"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,10"/>
+
+            <Button Classes="arcade" Content="CREATE" Command="{Binding CreateCommand}" HorizontalAlignment="Stretch"/>
+            <Button Classes="arcade" Content="CANCEL" Command="{Binding CancelCommand}" HorizontalAlignment="Stretch" Margin="0,20,0,0"/>
+        </StackPanel>
+
+        <!-- Connection error alert -->
+        <Border IsVisible="{Binding IsConnectionAlertVisible}"
+                Background="{DynamicResource AppOverlayBrush}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                ZIndex="500">
+            <Border Background="{DynamicResource AppSurfaceBrush}"
+                    BorderBrush="{DynamicResource AppAccentBrush}"
+                    BorderThickness="2"
+                    CornerRadius="10"
+                    Padding="24"
+                    MaxWidth="520"
+                    Margin="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <StackPanel Spacing="16">
+                    <TextBlock Text="{Binding ConnectionAlertMessage}"
+                               FontFamily="{StaticResource ArcadeFont}"
+                               FontSize="22"
+                               TextWrapping="Wrap"
+                               Foreground="{DynamicResource AppAccentBrush}"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"/>
+                    <Button Classes="arcade"
+                            Content="OK"
+                            Command="{Binding DismissConnectionAlertCommand}"
+                            MinWidth="140"
+                            HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,34 +1,21 @@
-# Pacman Recreation
+# Arcade Maze Chomper
 
-<a href='https://flathub.org/apps/io.github.jalau_capstones.pacman-recreation'>
+<a href='https://flathub.org/apps/io.github.jalau_capstones.arcade-maze-chomper'>
   <img width='240' alt='Download on Flathub' 
        src='https://flathub.org/api/badge?locale=en'/>
 </a>
 
-<img alt='WinGet' src='https://img.shields.io/badge/WinGet-CodeWithBotina.PacmanRecreation-0078D4?style=for-the-badge' />
-
-A faithful recreation of the classic Pac-Man arcade game, built as an educational project.
+An arcade-inspired maze-chase game built as an educational project.
 
 ## Installation
 
 ### Flathub (Recommended)
 
-The easiest way to install Pacman Recreation on Linux is via Flathub:
+The easiest way to install Arcade Maze Chomper on Linux is via Flathub:
 
 ```bash
-flatpak install flathub io.github.jalau_capstones.pacman-recreation
-flatpak run io.github.jalau_capstones.pacman-recreation
-```
-
-### WinGet (Windows)
-
-```powershell
-winget install CodeWithBotina.PacmanRecreation
-
-# Launch from any terminal (Winget command shim)
-pacman-recreation
-# or
-pacman
+flatpak install flathub io.github.jalau_capstones.arcade-maze-chomper
+flatpak run io.github.jalau_capstones.arcade-maze-chomper
 ```
 
 ### From Source
@@ -41,7 +28,7 @@ Requirements:
 git clone https://github.com/JalaU-Capstones/pacman-recreation.git
 cd pacman-recreation
 dotnet restore
-dotnet run --project src/PacmanGame/PacmanGame.csproj
+dotnet run --project src/MazeChomperGame/MazeChomperGame.csproj
 ```
 
 ## Features

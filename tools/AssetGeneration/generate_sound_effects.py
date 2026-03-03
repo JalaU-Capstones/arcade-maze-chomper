@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generador de Efectos de Sonido - Estilo Arcade 8-bit
-Genera todos los SFX necesarios para el juego Pac-Man
+Genera todos los SFX necesarios para el juego Arcade Maze Chomper
 """
 
 import numpy as np
@@ -132,7 +132,7 @@ def save_wav(filename, wave, sample_rate=SAMPLE_RATE):
 
 def create_chomp_sound():
     """
-    Sonido de Pac-Man comiendo puntos pequeños
+    Sonido de Arcade Maze Chomper comiendo puntos pequeños
     Sonido muy corto y agudo tipo "waka"
     """
     duration = 0.08
@@ -229,7 +229,7 @@ def create_eat_fruit_sound():
 
 def create_death_sound():
     """
-    Sonido de muerte de Pac-Man
+    Sonido de muerte de Arcade Maze Chomper
     Tono descendente dramático
     """
     duration = 1.0
@@ -455,7 +455,7 @@ def main():
     print(f"📊 Total de efectos generados: {len(sound_effects)}")
     print()
     print("📁 Efectos de sonido creados:")
-    print("   Pac-Man:")
+    print("   Arcade Maze Chomper:")
     print("   - chomp.wav (comer punto pequeño)")
     print("   - eat-power-pellet.wav (comer power pellet)")
     print("   - eat-ghost.wav (comer fantasma)")
@@ -481,7 +481,7 @@ def main():
     print("   - Síntesis: Ondas cuadradas, sinusoidales y triangulares")
     print("   - Optimizados para juegos")
     print()
-    print("🎮 ¡Listos para usar en tu juego Pac-Man!")
+    print("🎮 ¡Listos para usar en tu juego Arcade Maze Chomper!")
 
 if __name__ == "__main__":
     main()

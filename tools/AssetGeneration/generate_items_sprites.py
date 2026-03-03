@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generador de Sprite Sheet de Items - Estilo 8-bit Clásico
-Genera sprites de puntos, power pellets y frutas para Pac-Man
+Genera sprites de puntos, power pellets y frutas para Arcade Maze Chomper
 """
 
 from PIL import Image, ImageDraw

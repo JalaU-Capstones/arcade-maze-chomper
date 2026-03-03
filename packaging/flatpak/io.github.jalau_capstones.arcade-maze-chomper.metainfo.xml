@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>io.github.jalau_capstones.arcade-maze-chomper</id>
+    <name>Arcade Maze Chomper</name>
+    <summary>Arcade maze-chase game with multiplayer</summary>
+
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>MIT</project_license>
+
+    <description>
+        <p>An arcade-inspired maze-chase game built as an educational project. Navigate mazes, avoid enemies with distinct behaviors, and compete with friends in multiplayer.</p>
+        <p>Features:</p>
+        <ul>
+            <li>Single-player mode with multiple levels</li>
+            <li>Multiplayer mode for up to 5 players</li>
+            <li>Distinct enemy AI behaviors</li>
+            <li>Score tracking and profile system</li>
+        </ul>
+    </description>
+
+    <launchable type="desktop-id">io.github.jalau_capstones.arcade-maze-chomper.desktop</launchable>
+
+    <icon type="stock">io.github.jalau_capstones.arcade-maze-chomper</icon>
+
+    <screenshots>
+        <screenshot type="default">
+            <image type="source">https://raw.githubusercontent.com/JalaU-Capstones/pacman-recreation/b7788d557e16754129512d8cfbd09878f6686383/docs/images/screenshot1.png</image>
+            <caption>Classic maze gameplay</caption>
+        </screenshot>
+        <screenshot>
+            <image type="source">https://raw.githubusercontent.com/JalaU-Capstones/pacman-recreation/b7788d557e16754129512d8cfbd09878f6686383/docs/images/screenshot2.png</image>
+            <caption>Chasing ghosts in a tight corridor</caption>
+        </screenshot>
+    </screenshots>
+
+    <url type="homepage">https://github.com/JalaU-Capstones/pacman-recreation</url>
+    <url type="bugtracker">https://github.com/JalaU-Capstones/pacman-recreation/issues</url>
+    <url type="vcs-browser">https://github.com/JalaU-Capstones/pacman-recreation</url>
+
+    <developer_name>Code With Botina</developer_name>
+    <developer id="io.github.jalau_capstones">
+        <name>Code With Botina</name>
+    </developer>
+
+    <releases>
+        <release version="1.1.0" date="2026-03-03">
+            <description>
+                <p>Rebrand release</p>
+                <ul>
+                    <li>Single-player mode with 3 levels</li>
+                    <li>Multiplayer mode with up to 5 players</li>
+                    <li>Profile system with score tracking</li>
+                    <li>Distinct enemy AI behaviors</li>
+                </ul>
+            </description>
+        </release>
+    </releases>
+
+    <content_rating type="oars-1.1" />
+</component>

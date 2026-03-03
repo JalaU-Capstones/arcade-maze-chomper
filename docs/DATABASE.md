@@ -1,15 +1,15 @@
 # Database Documentation
 
-This document describes the SQLite database schema and usage for the Pac-Man Recreation project.
+This document describes the SQLite database schema and usage for the Arcade Maze Chomper Recreation project.
 
 ## Overview
 
 The game uses a local SQLite database to store user profiles, high scores, and settings. This ensures data persistence across game sessions.
 
 - **Database Engine:** SQLite (via `Microsoft.Data.Sqlite`)
-- **File Location:** `AppData/PacmanGame/profiles.db`
-  - **Windows:** `C:\Users\<User>\AppData\Roaming\PacmanGame\profiles.db`
-  - **Linux:** `/home/<User>/.config/PacmanGame/profiles.db` (or similar, depending on distro)
+- **File Location:** `AppData/MazeChomperGame/profiles.db`
+  - **Windows:** `C:\Users\<User>\AppData\Roaming\MazeChomperGame\profiles.db`
+  - **Linux:** `/home/<User>/.config/MazeChomperGame/profiles.db` (or similar, depending on distro)
 
 ## Schema
 
@@ -131,6 +131,6 @@ There is currently no versioning or migration system. If the schema changes in f
 
 To reset all data (profiles, scores, and settings):
 1. Close the game.
-2. Navigate to the `AppData/PacmanGame` folder.
+2. Navigate to the `AppData/MazeChomperGame` folder.
 3. Delete `profiles.db`.
 4. Restart the game (a new empty database will be created).

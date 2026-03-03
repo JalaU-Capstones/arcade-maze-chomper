@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Arcade Maze Chomper
+Comment=Arcade maze-chase game with multiplayer support
+Exec=arcade-maze-chomper
+Icon=io.github.jalau_capstones.arcade-maze-chomper
+Categories=Game;ArcadeGame;
+Terminal=false
+StartupNotify=true
+Keywords=arcade;maze;chase;multiplayer;
+StartupWMClass=MazeChomperGame.Views.MainWindow

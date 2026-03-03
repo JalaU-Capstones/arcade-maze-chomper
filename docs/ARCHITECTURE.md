@@ -17,7 +17,7 @@
 
 ## Overview
 
-This Pac-Man recreation follows the **MVVM (Model-View-ViewModel)** architectural pattern, which provides:
+This Arcade Maze Chomper recreation follows the **MVVM (Model-View-ViewModel)** architectural pattern, which provides:
 - Clear separation of concerns
 - Testability
 - Maintainability
@@ -60,7 +60,7 @@ This Pac-Man recreation follows the **MVVM (Model-View-ViewModel)** architectura
 
 ### Model
 **Responsibility:** Represents the data and business rules
-**Location:** `src/PacmanGame/Models/`
+**Location:** `src/MazeChomperGame/Models/`
 
 **Examples:**
 ```csharp
@@ -88,7 +88,7 @@ public class Ghost
 
 ### View
 **Responsibility:** Displays data and captures user input
-**Location:** `src/PacmanGame/Views/`
+**Location:** `src/MazeChomperGame/Views/`
 
 **Characteristics:**
 - Declarative XAML (AXAML) definitions
@@ -117,7 +117,7 @@ public class Ghost
 
 ### ViewModel
 **Responsibility:** Mediates between View and Model, handles presentation logic
-**Location:** `src/PacmanGame/ViewModels/`
+**Location:** `src/MazeChomperGame/ViewModels/`
 
 **Characteristics:**
 - Implements `INotifyPropertyChanged` (via ReactiveUI)
@@ -166,7 +166,7 @@ public class GameViewModel : ViewModelBase
 ## Project Structure
 
 ```
-src/PacmanGame/
+src/MazeChomperGame/
 ├── Models/
 │   ├── Entities/           # Game entities
 │   │   ├── Pacman.cs
@@ -314,7 +314,7 @@ src/PacmanGame/
 ┌─────────────────────────────────────────────┐
 │  3. Service Layer                           │
 │     GameEngine.Update()                     │
-│     - Move Pac-Man                          │
+│     - Move Arcade Maze Chomper                          │
 │     - Move Ghosts (AI)                      │
 │     - Check Collisions                      │
 │     - Update Score                          │
@@ -390,7 +390,7 @@ public class GameEngine : IGameEngine
     
     public void Render(Canvas canvas)
     {
-        // Draw tiles, collectibles, Pac-Man, and ghosts
+        // Draw tiles, collectibles, Arcade Maze Chomper, and ghosts
     }
 }
 ```
@@ -459,7 +459,7 @@ public class AudioManager : IAudioManager
 - `Error(string message, Exception ex)` - Log errors with stack traces
 - `Debug(string message)` - Log detailed information (optional)
 
-**Output:** Writes to `AppData/PacmanGame/pacman.log` with timestamps and log levels.
+**Output:** Writes to `AppData/MazeChomperGame/pacman.log` with timestamps and log levels.
 
 **Usage:** Injected into all services via dependency injection. Replaces Console.WriteLine throughout the codebase.
 
@@ -500,7 +500,7 @@ All difficulty parameters are defined in `Constants.cs` as `Level{N}GhostSpeedMu
 The ghost AI system is implemented using a **Strategy Pattern** for individual ghost behaviors and an **A* Pathfinding** algorithm for intelligent navigation.
 
 ### Core Concepts
-- **Chase Mode**: Ghosts actively pursue Pac-Man based on their unique targeting logic.
+- **Chase Mode**: Ghosts actively pursue Arcade Maze Chomper based on their unique targeting logic.
 - **Scatter Mode**: Ghosts retreat to their designated corner of the maze.
 - **Mode Switching**: The `GameEngine` toggles all ghosts between Chase and Scatter modes every `Constants.ModeToggleInterval` seconds.
 - **Ghost States**: AI behavior adapts to ghost states (Normal, Vulnerable, Warning, Eaten).
@@ -519,19 +519,19 @@ public interface IGhostAI
 #### Individual Ghost AI Implementations
 Each ghost type has its own `IGhostAI` implementation:
 - **`BlinkyAI.cs` (Red - "Shadow")**:
-  - **Chase Target**: Pac-Man's current tile.
+  - **Chase Target**: Arcade Maze Chomper's current tile.
   - **Scatter Target**: Top-right corner (`Constants.BlinkyScatterY`, `Constants.BlinkyScatterX`).
   - **Personality**: Direct and aggressive chaser.
 - **`PinkyAI.cs` (Pink - "Speedy")**:
-  - **Chase Target**: 4 tiles ahead of Pac-Man's current direction.
+  - **Chase Target**: 4 tiles ahead of Arcade Maze Chomper's current direction.
   - **Scatter Target**: Top-left corner (`Constants.PinkyScatterY`, `Constants.PinkyScatterX`).
-  - **Personality**: Ambusher, tries to cut off Pac-Man.
+  - **Personality**: Ambusher, tries to cut off Arcade Maze Chomper.
 - **`InkyAI.cs` (Cyan - "Bashful")**:
-  - **Chase Target**: Complex calculation based on Pac-Man's position (2 tiles ahead) and Blinky's position (vector doubling).
+  - **Chase Target**: Complex calculation based on Arcade Maze Chomper's position (2 tiles ahead) and Blinky's position (vector doubling).
   - **Scatter Target**: Bottom-right corner (`Constants.InkyScatterY`, `Constants.InkyScatterX`).
   - **Personality**: Flanker, unpredictable. Requires Blinky's position.
 - **`ClydeAI.cs` (Orange - "Pokey")**:
-  - **Chase Target**: Pac-Man's current tile if distance > 8 tiles. Otherwise, scatters to its corner.
+  - **Chase Target**: Arcade Maze Chomper's current tile if distance > 8 tiles. Otherwise, scatters to its corner.
   - **Scatter Target**: Bottom-left corner (`Constants.ClydeScatterY`, `Constants.ClydeScatterX`).
   - **Personality**: Shy, chases when far, retreats when close.
 
@@ -545,7 +545,7 @@ Implements the A* pathfinding algorithm to find the shortest path from a ghost's
 
 ### Ghost State-Specific Behavior
 - **`Normal`**: Follows the `IGhostAI` strategy (Chase/Scatter).
-- **`Vulnerable` / `Warning`**: Ghosts move randomly (prefer non-reverse), are slower, and can be eaten by Pac-Man.
+- **`Vulnerable` / `Warning`**: Ghosts move randomly (prefer non-reverse), are slower, and can be eaten by Arcade Maze Chomper.
 - **`Eaten`**: Ghosts ignore chase/scatter, return to the ghost house base, and only begin a respawn countdown once they reach it.
 
 ### AI State Machine (v1.0.1)
@@ -555,7 +555,7 @@ Ghosts are governed by a simple state machine driven by `GameEngine` timers and 
   - `InHouse` -> `ExitingHouse`: released by a per-ghost release timer.
   - `Normal`: uses `IGhostAI` (targets depend on the current global mode).
   - `Vulnerable` -> `Warning`: triggered by power pellet; transitions to `Warning` near the end of the timer.
-  - `Eaten`: triggered when Pac-Man collides with a vulnerable ghost; the ghost heads back to the house.
+  - `Eaten`: triggered when Arcade Maze Chomper collides with a vulnerable ghost; the ghost heads back to the house.
   - `Eaten` -> `InHouse`: when the ghost reaches its base/spawn, a respawn timer starts, then the ghost respawns and resumes normal behavior.
 
 ---
@@ -665,4 +665,4 @@ public ReactiveCommand<Unit, Unit> StartGameCommand { get; }
 
 **Last Updated:** February 2026
 **Author:** Diego Alejandro Botina
-**Project:** Pac-Man Educational Recreation
+**Project:** Arcade Maze Chomper Educational Recreation

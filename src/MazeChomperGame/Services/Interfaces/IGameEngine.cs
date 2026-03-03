@@ -1,0 +1,136 @@
+using Avalonia.Controls;
+using MazeChomperGame.Models.CustomLevel;
+using MazeChomperGame.Models.Entities;
+using MazeChomperGame.Models.Enums;
+using System;
+using System.Collections.Generic;
+
+namespace MazeChomperGame.Services.Interfaces;
+
+/// <summary>
+/// Interface for the game engine that manages all game logic and updates
+/// </summary>
+public interface IGameEngine
+{
+    /// <summary>
+    /// Event raised when the score changes
+    /// </summary>
+    event Action<int>? ScoreChanged;
+
+    /// <summary>
+    /// Event raised when a life is lost
+    /// </summary>
+    event Action? LifeLost;
+
+    /// <summary>
+    /// Event raised when a level is completed
+    /// </summary>
+    event Action? LevelComplete;
+
+    /// <summary>
+    /// Event raised when the game is over
+    /// </summary>
+    event Action? GameOver;
+
+    /// <summary>
+    /// Event raised when the player achieves victory
+    /// </summary>
+    event Action? Victory;
+
+    /// <summary>
+    /// Get the current game map
+    /// </summary>
+    TileType[,] Map { get; }
+
+    /// <summary>
+    /// Get or set Arcade Maze Chomper instance
+    /// </summary>
+    Pacman? Pacman { get; set; }
+
+    /// <summary>
+    /// Get the list of ghosts
+    /// </summary>
+    List<Ghost> Ghosts { get; }
+
+    /// <summary>
+    /// Get the list of collectibles
+    /// </summary>
+    List<Collectible> Collectibles { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether the game is running
+    /// </summary>
+    bool IsRunning { get; }
+
+    /// <summary>
+    /// Gets a value indicating whether the game is paused
+    /// </summary>
+    bool IsPaused { get; }
+
+    /// <summary>
+    /// Gets the current level number
+    /// </summary>
+    int CurrentLevel { get; }
+
+    /// <summary>
+    /// Gets or sets whether this engine is running as a multiplayer client
+    /// </summary>
+    bool IsMultiplayerClient { get; set; }
+
+    /// <summary>
+    /// Load a specific level
+    /// </summary>
+    /// <param name="level">Level number to load</param>
+    void LoadLevel(int level);
+
+    /// <summary>
+    /// Load a custom map from an absolute file path.
+    /// Intended for Creative Mode play testing and custom projects.
+    /// </summary>
+    /// <param name="mapFilePath">Absolute path to a map text file</param>
+    void LoadCustomLevel(string mapFilePath);
+
+    /// <summary>
+    /// Apply per-level custom settings for Creative Mode and custom projects.
+    /// Must be called after <see cref="LoadCustomLevel"/> so entities exist.
+    /// </summary>
+    void ApplyCustomLevelSettings(LevelConfig levelConfig);
+
+    /// <summary>
+    /// Start the game
+    /// </summary>
+    void Start();
+
+    /// <summary>
+    /// Stop the game
+    /// </summary>
+    void Stop();
+
+    /// <summary>
+    /// Pause the game
+    /// </summary>
+    void Pause();
+
+    /// <summary>
+    /// Resume a paused game
+    /// </summary>
+    void Resume();
+
+    /// <summary>
+    /// Set the desired direction for Arcade Maze Chomper
+    /// </summary>
+    /// <param name="direction">Direction to move</param>
+    void SetPacmanDirection(Direction direction);
+
+    /// <summary>
+    /// Update game logic for a single frame
+    /// </summary>
+    /// <param name="deltaTime">Time elapsed since last frame in seconds</param>
+    void Update(float deltaTime);
+
+    /// <summary>
+    /// Render the game to a canvas
+    /// </summary>
+    /// <param name="canvas">The canvas to render to</param>
+    void Render(Canvas canvas);
+}

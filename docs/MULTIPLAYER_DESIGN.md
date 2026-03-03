@@ -1,6 +1,6 @@
 # Multiplayer Game Flow Design
 
-This document outlines the network communication and UI flow for the multiplayer mode in the Pac-Man Educational Recreation project.
+This document outlines the network communication and UI flow for the multiplayer mode in the Arcade Maze Chomper Educational Recreation project.
 
 **Last Updated:** February 11, 2026
 
@@ -154,7 +154,7 @@ The lobby is where players gather before the game starts. The admin (room creato
 - Player view: Read-only role labels
 
 **Role Assignment Rules:**
-- 5 roles available: Pac-Man, Blinky, Pinky, Inky, Clyde
+- 5 roles available: Arcade Maze Chomper, Blinky, Pinky, Inky, Clyde
 - No duplicates (each role can be assigned to only 1 player)
 - Game can start with 1+ roles assigned (doesn't require all 5)
 - Unassigned players cannot participate but can spectate

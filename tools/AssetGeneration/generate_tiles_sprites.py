@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generador de Sprite Sheet de Tiles del Laberinto - Estilo 8-bit Clásico
-Genera todos los tiles necesarios para construir el mapa de Pac-Man
+Genera todos los tiles necesarios para construir el mapa de Arcade Maze Chomper
 """
 
 from PIL import Image, ImageDraw
@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw
 SPRITE_SIZE = 32  # Tamaño de cada sprite individual
 WALL_THICKNESS = 4  # Grosor de las paredes
 
-# Colores clásicos de Pac-Man (RGB)
+# Colores clásicos de Arcade Maze Chomper (RGB)
 COLORS = {
     'wall': (33, 33, 255),        # Azul clásico de las paredes
     'wall_fill': (0, 0, 0),       # Negro para el interior

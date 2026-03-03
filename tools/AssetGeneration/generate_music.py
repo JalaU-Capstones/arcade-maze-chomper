@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Generador de Música de Fondo - Estilo Arcade/Chiptune
-Genera 3 pistas musicales completas para el juego Pac-Man
+Genera 3 pistas musicales completas para el juego Arcade Maze Chomper
 """
 
 import numpy as np
@@ -446,7 +446,7 @@ def main():
     print("   - Canales múltiples mezclados profesionalmente")
     print("   - Loops perfectos para repetición continua")
     print()
-    print("🎮 ¡Listas para darle vida a tu juego Pac-Man!")
+    print("🎮 ¡Listas para darle vida a tu juego Arcade Maze Chomper!")
 
 if __name__ == "__main__":
     main()

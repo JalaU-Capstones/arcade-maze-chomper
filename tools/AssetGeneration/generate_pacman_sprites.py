@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Generador de Sprite Sheet de Pac-Man - Estilo 8-bit Clásico
-Genera todos los sprites necesarios para el juego Pac-Man
+Generador de Sprite Sheet de Arcade Maze Chomper - Estilo 8-bit Clásico
+Genera todos los sprites necesarios para el juego Arcade Maze Chomper
 """
 
 from PIL import Image, ImageDraw
@@ -11,14 +11,14 @@ import math
 SPRITE_SIZE = 32  # Tamaño de cada sprite individual
 SPRITE_SCALE = 2  # Factor de escala para mejor visualización
 
-# Colores clásicos de Pac-Man (RGB)
+# Colores clásicos de Arcade Maze Chomper (RGB)
 PACMAN_YELLOW = (255, 255, 0)
 BACKGROUND = (0, 0, 0, 0)  # Transparente
 BLACK = (0, 0, 0)
 
 def create_pacman_sprite(direction='right', frame=0):
     """
-    Crea un sprite de Pac-Man
+    Crea un sprite de Arcade Maze Chomper
     
     Args:
         direction: 'right', 'left', 'up', 'down'
@@ -60,7 +60,7 @@ def create_pacman_sprite(direction='right', frame=0):
                 center + radius, center + radius]
         draw.ellipse(bbox, fill=PACMAN_YELLOW, outline=PACMAN_YELLOW)
     else:
-        # Pac-Man con boca abierta (usando chord para crear el efecto)
+        # Arcade Maze Chomper con boca abierta (usando chord para crear el efecto)
         bbox = [center - radius, center - radius, 
                 center + radius, center + radius]
         
@@ -100,7 +100,7 @@ def create_pacman_sprite(direction='right', frame=0):
 
 def create_pacman_death_sprite(frame):
     """
-    Crea sprites de animación de muerte de Pac-Man
+    Crea sprites de animación de muerte de Arcade Maze Chomper
     
     Args:
         frame: 0-10 (progresión de la animación de muerte)
@@ -138,7 +138,7 @@ def create_pacman_death_sprite(frame):
 
 def create_pacman_spritesheet():
     """
-    Crea el sprite sheet completo de Pac-Man
+    Crea el sprite sheet completo de Arcade Maze Chomper
     
     Layout:
     Fila 1: Right (frames 0, 1, 2)
@@ -222,11 +222,11 @@ def create_sprite_map_json():
     print("✅ Archivo JSON de mapeo creado: pacman_sprite_map.json")
 
 def main():
-    print("🎮 Generador de Sprites de Pac-Man")
+    print("🎮 Generador de Sprites de Arcade Maze Chomper")
     print("=" * 50)
     
-    # Generar sprite sheet de Pac-Man
-    print("Generando sprite sheet de Pac-Man...")
+    # Generar sprite sheet de Arcade Maze Chomper
+    print("Generando sprite sheet de Arcade Maze Chomper...")
     pacman_sheet = create_pacman_spritesheet()
     
     # Guardar sprite sheet

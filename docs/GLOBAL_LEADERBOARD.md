@@ -10,7 +10,7 @@ The Global Top 10 Leaderboard allows players who have completed all 3 levels to 
 
 ### Storage
 - **Server:** SQLite database on the relay server (example: `pacmanserver.yourdomain.com`)
-- **Client:** JSON cache file in `$XDG_CACHE_HOME/pacman-recreation/`
+- **Client:** JSON cache file in `$XDG_CACHE_HOME/arcade-maze-chomper/`
 
 ### Network Protocol
 - Uses existing LiteNetLib connection to multiplayer server
@@ -39,12 +39,12 @@ To submit scores to the global leaderboard:
 ### Multiplayer
 Scores are tied to ROLES, not players:
 
-**When Pac-Man WINS:**
-- Pac-Man: Game points + 5000 bonus
-- Ghosts: Lose points equal to what Pac-Man ate (excluding bonus)
+**When Arcade Maze Chomper WINS:**
+- Arcade Maze Chomper: Game points + 5000 bonus
+- Ghosts: Lose points equal to what Arcade Maze Chomper ate (excluding bonus)
 
-**When Pac-Man LOSES:**
-- Pac-Man: Game points only
+**When Arcade Maze Chomper LOSES:**
+- Arcade Maze Chomper: Game points only
 - Ghosts: +1200 each
 
 **Role rotations:**
@@ -76,16 +76,16 @@ Response: `LeaderboardSubmitScoreResponse` with success status and rank
 ## Implementation Files
 
 ### Server
-- `PacmanGame.Server/Services/LeaderboardService.cs`
-- `PacmanGame.Server/RelayServer.cs` (message handlers)
+- `MazeChomperGame.Server/Services/LeaderboardService.cs`
+- `MazeChomperGame.Server/RelayServer.cs` (message handlers)
 
 ### Client
-- `PacmanGame/Services/GlobalLeaderboardCache.cs`
-- `PacmanGame/ViewModels/GlobalLeaderboardViewModel.cs`
-- `PacmanGame/Views/GlobalLeaderboardView.axaml`
+- `MazeChomperGame/Services/GlobalLeaderboardCache.cs`
+- `MazeChomperGame/ViewModels/GlobalLeaderboardViewModel.cs`
+- `MazeChomperGame/Views/GlobalLeaderboardView.axaml`
 
 ### Shared
-- `PacmanGame.Shared/NetworkMessages.cs` (new message types)
+- `MazeChomperGame.Shared/NetworkMessages.cs` (new message types)
 
 ## Security Considerations
 

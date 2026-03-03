@@ -1,0 +1,288 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:MazeChomperGame.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1156" d:DesignHeight="1020"
+             x:Class="MazeChomperGame.Views.MultiplayerGameView"
+             x:DataType="vm:MultiplayerGameViewModel"
+             Background="{DynamicResource AppBackgroundBrush}"
+             Focusable="True"
+             KeyboardNavigation.TabNavigation="None">
+
+    <Grid ColumnDefinitions="Auto,*,Auto">
+
+        <!-- Left Sidebar - HUD -->
+        <Border Grid.Column="0"
+                Background="{DynamicResource AppSurfaceBrush}"
+                BorderBrush="{DynamicResource AppAccentBrush}"
+                BorderThickness="0,0,2,0"
+                MinWidth="120"
+                Padding="15">
+
+            <StackPanel VerticalAlignment="Center"
+                        Spacing="40">
+
+                <!-- Score -->
+                <StackPanel Spacing="5">
+                    <TextBlock Text="SCORE"
+                              FontSize="14"
+                              Foreground="{DynamicResource AppTextDimBrush}"
+                              HorizontalAlignment="Center"
+                              FontFamily="{StaticResource ArcadeFont}"/>
+                    <TextBlock Text="{Binding Score, StringFormat='{}{0:N0}'}"
+                              FontSize="28"
+                              FontWeight="Bold"
+                              Foreground="{DynamicResource AppAccentBrush}"
+                              HorizontalAlignment="Center"
+                              FontFamily="{StaticResource ArcadeFont}"/>
+                </StackPanel>
+
+                <!-- Level -->
+                <StackPanel Spacing="5">
+                    <TextBlock Text="LEVEL"
+                              FontSize="14"
+                              Foreground="{DynamicResource AppTextDimBrush}"
+                              HorizontalAlignment="Center"
+                              FontFamily="{StaticResource ArcadeFont}"/>
+                    <TextBlock Text="{Binding Level}"
+                              FontSize="28"
+                              FontWeight="Bold"
+                              HorizontalAlignment="Center"
+                              FontFamily="{StaticResource ArcadeFont}"/>
+                </StackPanel>
+
+                <!-- Lives -->
+                <StackPanel Spacing="5">
+                    <TextBlock Text="LIVES"
+                              FontSize="14"
+                              Foreground="{DynamicResource AppTextDimBrush}"
+                              HorizontalAlignment="Center"
+                              FontFamily="{StaticResource ArcadeFont}"/>
+                    <TextBlock Text="{Binding Lives}"
+                              FontSize="28"
+                              FontWeight="Bold"
+                              Foreground="{DynamicResource AppDangerBrush}"
+                              HorizontalAlignment="Center"
+                              FontFamily="{StaticResource ArcadeFont}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Center - Game Canvas -->
+        <Border Grid.Column="1"
+                Background="{DynamicResource AppBackgroundBrush}"
+                BorderBrush="{DynamicResource AppBorderStrongBrush}"
+                BorderThickness="2">
+
+            <Canvas x:Name="GameCanvas"
+                    Width="896"
+                    Height="992"
+                    Background="{DynamicResource AppBackgroundBrush}"
+                    ClipToBounds="True">
+
+                <!-- Role Indicator (Top Left) -->
+                <TextBlock Text="{Binding MyRoleText, FallbackValue=''}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource AppAccentBrush}"
+                           Canvas.Left="10"
+                           Canvas.Top="10"
+                           ZIndex="10"/>
+
+                <!-- Objective Text (Below Role) -->
+                <TextBlock Text="{Binding ObjectiveText, FallbackValue=''}"
+                           FontSize="16"
+                           Canvas.Left="10"
+                           Canvas.Top="40"
+                           TextWrapping="Wrap"
+                           MaxWidth="300"
+                           ZIndex="10"/>
+            </Canvas>
+        </Border>
+
+        <!-- FPS overlay (F1) -->
+        <Border Grid.Column="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="8"
+                Padding="6,4"
+                Background="{DynamicResource AppOverlayBrush}"
+                CornerRadius="6"
+                IsVisible="{Binding ShowFps}"
+                ZIndex="200">
+            <TextBlock Text="{Binding Fps, StringFormat='FPS: {0}'}"
+                       Foreground="{DynamicResource AppAccentBrush}"
+                       FontFamily="{StaticResource ArcadeFont}"
+                       FontSize="14" />
+        </Border>
+
+        <!-- Right Sidebar - Controls -->
+        <Border Grid.Column="2"
+                Background="{DynamicResource AppSurfaceBrush}"
+                BorderBrush="{DynamicResource AppAccentBrush}"
+                BorderThickness="2,0,0,0"
+                MinWidth="120"
+                Padding="15">
+
+            <StackPanel VerticalAlignment="Center"
+                        Spacing="20">
+
+                <Button Content="{Binding PauseButtonText}"
+                       Command="{Binding TogglePauseCommand}"
+                       IsVisible="{Binding IsAdmin}"
+                       IsEnabled="{Binding IsGameRunning}"
+                       Classes="arcade"
+                       HorizontalAlignment="Stretch"/>
+
+                <Button Content="MENU"
+                       Command="{Binding ReturnToMenuCommand}"
+                       Classes="arcade"
+                       HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Background="{DynamicResource AppOverlayBrush}" IsVisible="{Binding IsPausedByHost}" ZIndex="98">
+            <TextBlock Text="GAME PAUSED" FontSize="60" FontWeight="Bold" Foreground="{DynamicResource AppAccentBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <Border Grid.Column="1" Background="{DynamicResource AppOverlayBrush}" IsVisible="{Binding IsReadyFreeze}" ZIndex="99">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="10">
+                <TextBlock Text="READY!" FontSize="72" FontWeight="Bold" Foreground="{DynamicResource AppAccentBrush}" HorizontalAlignment="Center" FontFamily="{StaticResource ArcadeFont}"/>
+                <TextBlock Text="{Binding ReadySecondsRemaining, StringFormat='{}{0}'}"
+                           FontSize="48"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource AppTextPrimaryBrush}"
+                           HorizontalAlignment="Center"
+                           FontFamily="{StaticResource ArcadeFont}"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Background="{DynamicResource AppOverlayBrush}" IsVisible="{Binding IsSpectating}" ZIndex="98">
+            <TextBlock Text="SPECTATING" FontSize="60" FontWeight="Bold" Foreground="{DynamicResource AppInfoBrush}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0"/>
+        </Border>
+
+        <!-- Spectator Promotion Message -->
+        <Border Grid.Column="1" Background="{DynamicResource AppOverlayBrush}" IsVisible="{Binding IsSpectatorPromotion}" ZIndex="99">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+                <TextBlock Text="{Binding SpectatorPromotionMessage}" FontSize="32" FontWeight="Bold" Foreground="{DynamicResource AppInfoBrush}" HorizontalAlignment="Center" TextWrapping="Wrap" MaxWidth="600"/>
+                <TextBlock Text="{Binding SpectatorPromotionTimer, StringFormat='Starting in {0}...'}" FontSize="48" FontWeight="Bold" Foreground="{DynamicResource AppAccentBrush}" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Level Complete Message -->
+        <Border Grid.Column="1"
+                Background="{DynamicResource AppOverlayBrush}"
+                IsVisible="{Binding IsLevelComplete}"
+                ZIndex="99">
+            <TextBlock Text="LEVEL COMPLETE"
+                       FontSize="60"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AppSuccessBrush}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="{StaticResource ArcadeFont}"/>
+        </Border>
+
+        <!-- Game Over Dialog (overlay) -->
+        <Border Grid.Column="0" Grid.ColumnSpan="3"
+                Background="{DynamicResource AppOverlayBrush}"
+                IsVisible="{Binding IsGameOver}"
+                ZIndex="100">
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Spacing="30">
+
+                <TextBlock Text="{Binding GameOverTitle}"
+                          FontSize="80"
+                          FontWeight="Bold"
+                          Foreground="{DynamicResource AppDangerBrush}"
+                          HorizontalAlignment="Center"
+                          FontFamily="{StaticResource ArcadeFont}"/>
+
+                <TextBlock Text="{Binding GameOverMessage}"
+                          FontSize="32"
+                          HorizontalAlignment="Center"
+                          FontFamily="{StaticResource ArcadeFont}"/>
+
+                <TextBlock Text="{Binding FinalScore, StringFormat='FINAL SCORE: {0}'}"
+                          FontSize="32"
+                          HorizontalAlignment="Center"
+                          FontFamily="{StaticResource ArcadeFont}"/>
+
+                <StackPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           Spacing="20">
+
+                    <Button Content="RESTART GAME"
+                           Command="{Binding RestartGameCommand}"
+                           IsVisible="{Binding IsAdmin}"
+                           Classes="arcade"
+                           MinWidth="200"/>
+
+                    <Button Content="MAIN MENU"
+                           Command="{Binding ReturnToMenuCommand}"
+                           Classes="arcade"
+                           MinWidth="200"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Victory Dialog (hidden by default) -->
+        <Border x:Name="VictoryDialog"
+                Background="{DynamicResource AppOverlayBrush}"
+                IsVisible="{Binding IsVictory}"
+                ZIndex="100"
+                Grid.ColumnSpan="3">
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Spacing="40">
+
+                <!-- Trophy Icon (large text trophy emoji or custom) -->
+                <TextBlock Text="🏆"
+                          FontSize="120"
+                          HorizontalAlignment="Center"/>
+
+                <TextBlock Text="VICTORY!"
+                          FontSize="72"
+                          FontWeight="Bold"
+                          Foreground="{DynamicResource AppAccentBrush}"
+                          HorizontalAlignment="Center"
+                          FontFamily="{StaticResource ArcadeFont}"/>
+
+                <TextBlock Text="{Binding GameOverMessage}"
+                          FontSize="28"
+                          HorizontalAlignment="Center"
+                          FontFamily="{StaticResource ArcadeFont}"/>
+
+                <TextBlock Text="{Binding FinalScore, StringFormat='FINAL SCORE: {0}'}"
+                          FontSize="40"
+                          FontWeight="Bold"
+                          Foreground="{DynamicResource AppAccentBrush}"
+                          HorizontalAlignment="Center"
+                          FontFamily="{StaticResource ArcadeFont}"
+                          Margin="0,20,0,0"/>
+
+                <StackPanel Orientation="Horizontal"
+                           HorizontalAlignment="Center"
+                           Spacing="20"
+                           Margin="0,20,0,0">
+
+                    <Button Content="RESTART GAME"
+                           Command="{Binding RestartGameCommand}"
+                           IsVisible="{Binding IsAdmin}"
+                           Classes="arcade"
+                           MinWidth="220"/>
+
+                    <Button Content="MAIN MENU"
+                           Command="{Binding ReturnToMenuCommand}"
+                           Classes="arcade"
+                           MinWidth="220"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</UserControl>

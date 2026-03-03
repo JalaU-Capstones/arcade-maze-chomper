@@ -1,7 +1,7 @@
 # Game Design Document
 
 ## Overview
-This Pac-Man recreation follows the original 1980 arcade game mechanics with modern improvements.
+This Arcade Maze Chomper recreation follows the original 1980 arcade game mechanics with modern improvements.
 
 ## Level Design
 
