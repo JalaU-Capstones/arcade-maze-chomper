@@ -16,3 +16,6 @@ The installer manifest uses a ZIP + nested portable installer:
 
 This makes Winget create shims in `%LOCALAPPDATA%\\Microsoft\\WinGet\\Links`, which is on the user PATH in new terminal sessions.
 
+Current command aliases:
+- `arcade-maze-chomper`
+- `chomper`
